@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded',function(){
             let image = document.createElement('img');
             image.src = array[i];
             document.querySelector("#dog-image-container").append(image);
-        } 
+        }
     })
     //fetch all breeds
     fetch(breedUrl)
@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
         for (let i = 0; i < keys.length; i++) {
             const ul = document.querySelector("#dog-breeds");
-            //let li = document.createElement('li');
             let currentBreed = keys[i]
             if (breedArray[currentBreed].length === 0) {
                 let li = document.createElement('li');
@@ -42,9 +41,9 @@ document.addEventListener('DOMContentLoaded',function(){
                     createNewEvent(li)
                 }
             }
-            
+
         }
-    }) 
+    })
     //dropdown menu js
     const dropdownMenu = document.querySelector("#breed-dropdown")
     dropdownMenu.addEventListener('change', function(e){
@@ -69,7 +68,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 }
             }
         }
-    })   
+    })
 })
 
 function randomHexColor(){
