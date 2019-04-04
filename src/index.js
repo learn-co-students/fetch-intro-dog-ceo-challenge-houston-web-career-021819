@@ -1,1 +1,82 @@
 console.log('%c HI', 'color: firebrick')
+
+
+fetch("https://dog.ceo/api/breeds/image/random/4")
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(response){
+        const images_array = response["message"];
+        images_array.forEach(function(element){
+            add_image(element);
+        })
+        
+    })
+
+function add_image(input){
+    const container = document.getElementById("dog-image-container");
+    const list = document.createElement('li');
+    container.append(list); 
+    const image = document.createElement('img');
+    image.src = input
+    list.append(image)
+    
+}
+
+fetch('https://dog.ceo/api/breeds/list/all')
+    .then(function(response){
+        return response.json();
+    })
+    .then(function(response){
+        var breed_name = ""
+        const breeds_object = response["message"];
+        const keys = Object.keys(breeds_object);
+        const unique_letters = []
+        keys.forEach(function(element){
+            
+        })
+        keys.forEach(function(element){
+            add_breed(element);
+            if(!(unique_letters.includes(element.charAt(0)))){
+                unique_letters.push(element.charAt(0));
+            }
+          })
+        unique_letters.forEach(function(element){
+            add_option(element);
+        })
+        
+    })
+
+function add_breed(input){
+    const breed_container = document.getElementById("dog-breeds");
+    const list = document.createElement('li');
+    breed_container.append(list);
+    list.innerText = input;
+    list.addEventListener('click',function(e){
+        list.style.color = "blue";
+    })
+
+}
+
+// document.addEventListener('DOMContentLoaded', function(){
+//     const breed_menu = document.getElementById("breed-dropdown");
+//     breed_menu.addEventListener('change', function(e){
+//         const selected_letter = breed_menu.value
+//     })
+// })
+    
+
+function add_option(input){
+    //document.getElementById("breed-dropdown").value = input;
+    //I had thought the above line will do it all. But it didnt!
+    const breed_menu = document.getElementById("breed-dropdown");
+    const breed_option = document.createElement('option')
+    breed_option.innerText = input;
+    //adding above line only made the letters to be displayed
+    breed_option.value = input;
+    breed_menu.append(breed_option);    
+}
+
+//challenge 1,2,3 are done! In challenge4-displayed the options with the 
+//starting letters of the breed. Yet to completre the other half of challenge 4.
+
